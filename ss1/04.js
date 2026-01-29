@@ -1,4 +1,9 @@
-let nameBook = prompt("tên của một cuốn sách");
+let tenSachGoc = prompt("Mời bạn nhập tên cuốn sách:");
 
-console.log(`Tên gốc :${nameBook} `);
-console.log(` Tên viết hoa toàn bộ :`)
+let tenVietHoa = tenSachGoc.toUpperCase(); 
+let tenVietThuong = tenSachGoc.toLowerCase(); 
+
+console.log("--- KẾT QUẢ XỬ LÝ ---");
+console.log("Tên gốc: " + tenSachGoc);
+console.log("Tên viết thường: " + tenVietThuong);
+console.log("Tên viết hoa: " + tenVietHoa);
