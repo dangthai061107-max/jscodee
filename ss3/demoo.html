@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let count = 0;
+        while (count < 3) {
+            let password = prompt("Nhập Mật Khẩu:");
+            if (password === "admin124") {
+                console.log("Đăng nhập thành công");
+                break;
+            } else {
+                console.log(`Nhập sai mật khẩu lần thứ ${count}`);
+                count++;
+            }
+            if (count === 3) {
+                console.log("hết lượt nhập");
+                alert("Bạn đã nhập sai quá 3 lần, tài khoản bị khóa!");
+            } else {
+                let choice = +prompt(`chọn chức năng:
+                1 - nhập lô sách mới 
+                2 - vẽ sơ đồ kệ sách
+                3 - thoát`);
+
+                switch (choice) {
+                    case 1:
+                        //B1 yêu cầu người dùng nhập số lượng sách
+                        //B2 dùng vòng lặp for để nhập gia tiền từng quyển
+                        //B3 trong vòng lặp yêu cầu người dùng nhập giá tiền
+                        //B4 
+                        console.log("Nhập lô sách mới");
+                        break;
+                    case 2:
+                        console.log("Vẽ sơ đồ kệ sách");
+                        break;
+                    case 3:
+                        console.log("Thoát");
+                        break;
+                    default:
+                        console.log("Lựa chọn không hợp lệ");
+                        break;
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>

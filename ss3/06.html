@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let total = 0;
+        let serious = 0;
+        let medium = 0;
+        let light = 0;
+        let suggest = 0;
+        let positive = 0;
+
+        while (true) {
+            let c = prompt("Có khiếu nại/phản hồi mới từ bạn đọc không? (có/không)");
+            if (c === "không") break;
+            if (c !== "có") continue;
+
+            let name;
+            do {
+                name = prompt("Tên bạn đọc:");
+            } while (name === "");
+
+            prompt("Mã thẻ bạn đọc (có thể để trống):");
+
+            let type;
+            do {
+                type = parseInt(prompt(
+                    "Loại phản hồi:\n1 - Khiếu nại\n2 - Đề xuất cải thiện\n3 - Phản hồi tích cực"
+                ));
+            } while (type < 1 || type > 3);
+
+            let level = 0;
+            if (type === 1) {
+                do {
+                    level = parseInt(prompt(
+                        "Mức độ nghiêm trọng:\n1 - Nhẹ\n2 - Trung bình\n3 - Nghiêm trọng"
+                    ));
+                } while (level < 1 || level > 3);
+            }
+
+            prompt("Nội dung ngắn gọn:");
+
+            total++;
+
+            if (type === 1 && level === 3) {
+                console.log("→ Chuyển ngay lãnh đạo - Khiếu nại nghiêm trọng");
+                serious++;
+            }
+            else if (type === 1 && level === 2) {
+                console.log("→ Ghi nhận, sẽ xử lý trong ngày - Khiếu nại trung bình");
+                medium++;
+            }
+            else if (type === 1 && level === 1) {
+                console.log("→ Xử lý ngay tại quầy - Khiếu nại nhẹ");
+                light++;
+            }
+            else if (type === 2) {
+                console.log("→ Cảm ơn! Đề xuất đã được ghi nhận");
+                suggest++;
+            }
+            else {
+                console.log("→ Cảm ơn bạn đã phản hồi tích cực!");
+                positive++;
+            }
+        }
+
+        console.log("===== BÁO CÁO CUỐI CA =====");
+        console.log("Tổng phản hồi/khiếu nại:", total);
+        console.log("Khiếu nại nghiêm trọng:", serious);
+        console.log("Khiếu nại trung bình:", medium);
+        console.log("Khiếu nại nhẹ:", light);
+        console.log("Đề xuất cải thiện:", suggest);
+        console.log("Phản hồi tích cực:", positive);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let total = 0, ok = 0, fail = 0, wait = 0;
+
+        while (true) {
+            let c = prompt("Có yêu cầu đặt mượn trước mới không? (có/không)");
+            if (c === "không") break;
+            if (c !== "có") continue;
+
+            prompt("Tên bạn đọc:");
+            prompt("Mã sách:");
+            prompt("Tên sách:");
+
+            let days;
+            do {
+                days = parseInt(prompt("Số ngày dự kiến chờ:"));
+            } while (days < 1);
+
+            let p;
+            do {
+                p = parseInt(prompt("Ưu tiên (1-SV, 2-GV, 3-Đặc cách):"));
+            } while (p < 1 || p > 3);
+
+            total++;
+
+            if (days > 45) {
+                console.log("Từ chối: Thời gian chờ quá lâu (>45 ngày)");
+                fail++;
+            } else if (p === 3) {
+                console.log("Đặt trước thành công - Ưu tiên đặc cách cao nhất");
+                ok++;
+            } else if (p === 2 && days <= 30) {
+                console.log("Đặt trước thành công - Ưu tiên giảng viên/nghiên cứu");
+                ok++;
+            } else if (p === 1 && days <= 21) {
+                console.log("Đặt trước thành công");
+                ok++;
+            } else {
+                console.log("Đặt trước tạm thời - Chờ xét duyệt thêm");
+                wait++;
+            }
+        }
+
+        console.log("Tổng yêu cầu:", total);
+        console.log("Thành công:", ok);
+        console.log("Từ chối:", fail);
+        console.log("Chờ duyệt:", wait);
+
+    </script>
+</body>
+</html>
