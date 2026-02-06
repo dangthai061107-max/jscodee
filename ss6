@@ -1,0 +1,81 @@
+function librarySystemEasy() {
+  let books = ["Toán", "Văn", "Anh"];
+  let choice;
+
+  do {
+    choice = Number(
+      prompt(
+        `=== QUẢN LÝ THƯ VIỆN ===
+1. Thêm sách
+2. Xem danh sách
+3. Tìm sách
+4. Sửa tên sách
+5. Đảo ngược kệ sách
+6. Nhập kho từ nơi khác
+7. Thoát
+Chọn (1-7):`,
+      ),
+    );
+
+    switch (choice) {
+      case 1:
+        let newBook = prompt("Nhập tên sách cần thêm:");
+        if (newBook) {
+          books.push(newBook);
+          alert("Đã thêm sách!");
+        }
+        break;
+
+      case 2:
+        console.clear();
+        console.log("DANH SÁCH SÁCH:");
+        for (let i = 0; i < books.length; i++) {
+          console.log(`${i + 1}. ${books[i]}`);
+        }
+        alert("Đã in danh sách ra console (F12)");
+        break;
+
+      case 3:
+        let findBook = prompt("Nhập tên sách cần tìm:");
+        let indexFind = books.indexOf(findBook);
+        if (indexFind !== -1) {
+          alert(`Tìm thấy sách ở vị trí ${indexFind}`);
+        } else {
+          alert("Không tìm thấy sách!");
+        }
+        break;
+
+      case 4:
+        let oldBook = prompt("Nhập tên sách cần sửa:");
+        let indexEdit = books.indexOf(oldBook);
+        if (indexEdit !== -1) {
+          let newName = prompt("Nhập tên mới:");
+          books[indexEdit] = newName;
+          alert("Đã cập nhật sách!");
+        } else {
+          alert("Sách không tồn tại!");
+        }
+        break;
+
+      case 5:
+        books.reverse();
+        alert("Đã đảo ngược kệ sách!");
+        break;
+
+      case 6:
+        let otherBooks = ["Truyện Tranh", "Kỹ Năng Sống"];
+        books = books.concat(otherBooks);
+        alert("Đã nhập thêm sách từ nguồn khác!");
+        break;
+
+      case 7:
+        alert("Thoát chương trình!");
+        break;
+
+      default:
+        alert("Chọn sai, hãy chọn lại!");
+    }
+  } while (choice !== 7);
+}
+
+librarySystemEasy();
