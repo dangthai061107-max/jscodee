@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let playerIds = [];
+            let playerPositions = [];
+
+            let n = parseInt(prompt("Có bao nhiêu cầu thủ cần nhập vào đội bóng?"));
+
+            const positionMap = {
+                1: "Thủ môn",
+                2: "Hậu vệ",
+                3: "Tiền vệ",
+                4: "Tiền đạo"
+            };
+
+            for (let i = 0; i < n; i++) {
+                console.log(`Nhập cầu thủ ${i + 1}:`);
+
+                let id;
+                let isUnique;
+
+                do {
+                    id = prompt("Mã cầu thủ:");
+                    isUnique = true;
+
+                    for (let j = 0; j < playerIds.length; j++) {
+                        if (playerIds[j] === id) {
+                            isUnique = false;
+                            alert("Mã cầu thủ đã tồn tại, vui lòng nhập lại!");
+                            break;
+                        }
+                    }
+                } while (!isUnique);
+
+                let pos;
+                do {
+                    pos = parseInt(
+                        prompt("Vị trí (1: Thủ môn 2: Hậu vệ 3: Tiền vệ 4: Tiền đạo):")
+                    );
+                } while (pos < 1 || pos > 4);
+
+                playerIds.push(id);
+                playerPositions.push(positionMap[pos]);
+            }
+
+            function printTeamRoster() {
+                console.log(`Đội bóng hiện tại (${playerIds.length} cầu thủ):`);
+                for (let i = 0; i < playerIds.length; i++) {
+                    console.log(`${i + 1}. ${playerIds[i]} - ${playerPositions[i]}`);
+                }
+            }
+
+            function findPlayersByPosition(position) {
+                let indexes = [];
+                for (let i = 0; i < playerPositions.length; i++) {
+                    if (playerPositions[i] === position) {
+                        indexes.push(i);
+                    }
+                }
+                return indexes;
+            }
+
+            let choosePos = parseInt(
+                prompt(
+                    "Nhập vị trí cầu thủ muốn đếm số lượng (1: Thủ môn , 2: Hậu vệ ,3: Tiền vệ, 4: Tiền đạo):"
+                )
+            );
+
+            let positionName = positionMap[choosePos];
+
+            printTeamRoster();
+
+            let result = findPlayersByPosition(positionName);
+
+            console.log(`Số cầu thủ ở vị trí ${positionName}: ${result.length}`);
+            console.log(
+                `Các chỉ số cầu thủ ở vị trí ${positionName}: ${result.join(", ")}`
+            );
+
+    </script>
+</body>
+</html>
